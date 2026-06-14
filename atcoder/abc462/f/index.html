@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../c/">
+        <link rel="prev" href="../e/">
       
-      
-        <link rel="next" href="../e/">
       
       
         
@@ -23,7 +21,7 @@
     
     
       
-        <title>d - ph的题解区</title>
+        <title>f - ph的题解区</title>
       
     
     
@@ -66,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#accomplice" class="md-skip">
+        <a href="#more-abc" class="md-skip">
           跳转至
         </a>
       
@@ -100,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              d
+              f
             
           </span>
         </div>
@@ -658,19 +656,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../d/" class="md-nav__link">
         
   
   
@@ -686,7 +675,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -724,10 +712,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../f/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -743,6 +740,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -798,13 +796,30 @@
 
 
 
-<h1 id="accomplice"><a href="https://atcoder.jp/contests/abc462/tasks/abc462_d">Accomplice</a></h1>
-<p>考虑对每个 <span class="arithmatex">\(x\)</span> 统计可能罪犯对数。
-设有 <span class="arithmatex">\(c_i\)</span> 个人能在时间 <span class="arithmatex">\([i, i + D]\)</span> 犯罪，则从时间 <span class="arithmatex">\(i\)</span> 开始犯罪的可能罪犯对数为 <span class="arithmatex">\(c_i(c_i - 1) / 2\)</span> 对。
-于是答案为 <span class="arithmatex">\(\sum_{i \in N} c_i(c_i - 1) / 2\)</span>。</p>
-<p>考虑维护 <span class="arithmatex">\(c\)</span>，我们发现第 <span class="arithmatex">\(i\)</span> 个人能在 <span class="arithmatex">\([S_i, T_i - D]\)</span> 开始犯罪，这相当于在 <span class="arithmatex">\(c\)</span> 上进行一次区间加。
-而我们只需要在所有区间加完成后得到 <span class="arithmatex">\(c\)</span>， 因此这部分可以差分完成。</p>
-<p>最终时间复杂度 <span class="arithmatex">\(O(N + \max T_i)\)</span>。</p>
+<h1 id="more-abc"><a href="https://atcoder.jp/contests/abc462/tasks/abc462_f">More ABC</a></h1>
+<p>下记 <span class="arithmatex">\(N = |S|\)</span>；<span class="arithmatex">\(S'\)</span> 表示操作后的串；<span class="arithmatex">\(c_i\)</span> 表示 <span class="arithmatex">\(S[1, i]\)</span> 中 <code>ABC</code> 的数量，<span class="arithmatex">\(c'_i\)</span> 表示 <span class="arithmatex">\(S'[1, i]\)</span> 中 <code>ABC</code> 的数量；<span class="arithmatex">\(g_s\)</span> 表示将 <span class="arithmatex">\(s\)</span> 化为 <code>ABC</code> 需要的操作次数。</p>
+<p>设 <span class="arithmatex">\(dp_{i, j}\)</span> 表示 <span class="arithmatex">\(c'_i - c_i = j\)</span> 时的最小操作数量，则答案为 <span class="arithmatex">\(dp_{N, K}\)</span>。</p>
+<p>考虑从 <span class="arithmatex">\(i - 1\)</span> 转移到 <span class="arithmatex">\(i\)</span>。具体地，考虑以下两种情况：</p>
+<ul>
+<li><span class="arithmatex">\(S'[i - 2, i] = \text{ABC}\)</span>，即 <span class="arithmatex">\(c'_i = c'_{i - 1} + 1\)</span>。
+这时我们要考虑操作是否破坏了 <span class="arithmatex">\(S\)</span> 中原本的 <code>ABC</code>，转移方程为：
+$$
+dp_{i, j} = dp_{i - 3, j - 1 + c_i - c_{i - 3}} + g_{S[i - 2, i]}
+$$</li>
+<li><span class="arithmatex">\(S'[i - 2, i] \neq \text{ABC}\)</span>，即 <span class="arithmatex">\(c'_i = c'_{i - 1}\)</span>。
+此时我们一定没有操作 <span class="arithmatex">\(S_i\)</span>，因为不操作时 <code>ABC</code> 数量不减，而操作数减少。因此转移方程为：
+$$
+dp_{i, j} = dp_{i - 1, j + c_i - c_{i - 1}}
+$$
+转移时两者取最小即可，注意边界情况。<span class="arithmatex">\(dp\)</span> 的初值为：
+$$
+dp_{i, j} = \begin{cases}
+0 &amp; j = 0 \newline
++\infty &amp; j \ge 1
+\end{cases}
+$$</li>
+</ul>
+<p>时间复杂度 <span class="arithmatex">\(O(NK)\)</span>。</p>
 
 
 
