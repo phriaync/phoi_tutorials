@@ -24,6 +24,10 @@ nav:
     - a: codeforces/1/a.md
     - b: codeforces/1/b.md
     - c: codeforces/1/c.md
+  - cf2:
+    - a: codeforces/2/a.md
+    - b: codeforces/2/b.md
+    - c: codeforces/2/c.md
 - atcoder:
   - abc462:
     - a: atcoder/abc462/a.md
@@ -32,3 +36,5 @@ nav:
     - d: atcoder/abc462/d.md
     - e: atcoder/abc462/e.md
     - f: atcoder/abc462/f.md
+  - arc222:
+    - a: atcoder/arc222/a.md
