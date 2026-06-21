@@ -28,6 +28,11 @@ nav:
     - a: codeforces/2/a.md
     - b: codeforces/2/b.md
     - c: codeforces/2/c.md
+  - cf3:
+    - a: codeforces/3/a.md
+    - b: codeforces/3/b.md
+    - c: codeforces/3/c.md
+    - d: codeforces/3/d.md
 - atcoder:
   - abc462:
     - a: atcoder/abc462/a.md
@@ -36,5 +41,11 @@ nav:
     - d: atcoder/abc462/d.md
     - e: atcoder/abc462/e.md
     - f: atcoder/abc462/f.md
+  - abc463:
+    - a: atcoder/abc463/a.md
+    - b: atcoder/abc463/b.md
+    - c: atcoder/abc463/c.md
+    - d: atcoder/abc463/d.md
+    - e: atcoder/abc463/e.md
   - arc222:
     - a: atcoder/arc222/a.md
