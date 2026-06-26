@@ -33,6 +33,11 @@ nav:
     - b: codeforces/3/b.md
     - c: codeforces/3/c.md
     - d: codeforces/3/d.md
+  - cf4:
+    - a: codeforces/4/a.md
+    - b: codeforces/4/b.md
+    - c: codeforces/4/c.md
+    - d: codeforces/4/d.md
 - atcoder:
   - abc462:
     - a: atcoder/abc462/a.md
